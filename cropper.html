@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.css"
+      integrity="sha512-bs9fAcCAeaDfA4A+NiShWR886eClUcBtqhipoY5DM60Y1V3BbVQlabthUBal5bq8Z8nnxxiyb1wfGX2n76N1Mw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .overlay-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 100%;
+        display: flex;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page h2 {
+        margin-top: 0;
+      }
+
+      .overlay-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #fff;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .container {
+        max-width: 640px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    </style>
+    <title>Overlay with Multiple Pages</title>
+  </head>
+  <body>
+    <button id="openOverlayBtn" onclick="openOverlay()">Start Designing</button>
+
+    <div id="overlay" class="overlay">
+      <div class="overlay-content">
+        <div class="container">
+          <div>
+            <img
+              id="image"
+              src="https://www.fotobehang.com/media/catalog/product/cache/871f459736130e239a3f5e6472128962/w/0/w00997_option3.jpg"
+              alt="Picture"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="page" id="page1">
+            <div class="image_size_container">
+              <div class="image_size_container-wrap">
+                <div>
+                  <h2>Photo wallpaper ( fleece wallpaper )</h2>
+                  <h3>Compose your photo wallpaper!</h3>
+                  <p>
+                    We produce your custom photo wallpaper. Fill in the fields
+                    below and we will get started for you!
+                  </p>
+                  <h4>Enter the size of your wall</h4>
+                  <span
+                    >Enter the dimensions of your wall here to make a selection.
+                    <strong
+                      >We recommend adding 10cm at height and width ( margin
+                      ).</strong
+                    ></span
+                  >
+                </div>
+                <div>
+                  <label for="height">Height</label>
+                  <input type="text" id="height" name="height" />
+                  <label for="width">Width</label>
+                  <input type="text" id="width" name="width" />
+                </div>
+              </div>
+            </div>
+            <button id="getCroppedImage">Get image</button>
+          </div>
+          <div class="page" id="page2">
+            <h2>Page 2</h2>
+            <p>This is content for page 2.</p>
+          </div>
+          <div class="page" id="page3">
+            <h2>Page 2</h2>
+            <p>This is content for page 2.</p>
+          </div>
+          <div class="page" id="page4">
+            <h2>Page 2</h2>
+            <p>This is content for page 2.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay-navigation">
+        <button id="prevBtn" onclick="prevPage()" disabled>Prev</button>
+        <span id="currentPage">1</span>
+        <button id="nextBtn" onclick="nextPage()">Next</button>
+      </div>
+      <button class="close-btn" onclick="closeOverlay()">X</button>
+    </div>
+
+    <script>
+      let currentPage = 1;
+      const totalPages = document.getElementsByClassName("page").length;
+
+      function openOverlay() {
+        document.getElementById("overlay").style.display = "flex";
+        showPage(currentPage);
+        updateButtons();
+      }
+
+      function closeOverlay() {
+        document.getElementById("overlay").style.display = "none";
+      }
+
+      function showPage(pageNumber) {
+        const pages = document.getElementsByClassName("page");
+        for (let i = 0; i < pages.length; i++) {
+          pages[i].style.display = "none";
+        }
+
+        document.getElementById(`page${pageNumber}`).style.display = "block";
+        document.getElementById("currentPage").textContent = pageNumber;
+        updateButtons();
+      }
+
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          showPage(currentPage);
+        }
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+        }
+      }
+
+      function updateButtons() {
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled =
+          currentPage === totalPages;
+      }
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"
+      integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        var image = document.querySelector("#image");
+        var widthInput = document.querySelector("#width");
+        var heightInput = document.querySelector("#height");
+
+        // Add an event listener to update aspect ratio when width or height changes
+        widthInput.addEventListener("input", updateAspectRatio);
+        heightInput.addEventListener("input", updateAspectRatio);
+
+        // Function to update aspect ratio based on input values
+        function updateAspectRatio() {
+          var aspectRatioValue = widthInput.value / heightInput.value;
+          cropper.setAspectRatio(aspectRatioValue);
+        }
+
+        var cropper = new Cropper(image, {
+          dragMode: "move",
+          aspectRatio: widthInput.value / heightInput.value,
+          autoCropArea: 1,
+          restore: true,
+          guides: false,
+          center: true,
+          highlight: false,
+          cropBoxMovable: false,
+          cropBoxResizable: false,
+          toggleDragModeOnDblclick: true,
+          movable: true,
+          viewMode: 1, // Set the view mode as needed (0, 1, or 2)
+        });
+
+        // Example: Get cropped image data when a button is clicked
+        var getCroppedImageButton = document.querySelector("#getCroppedImage");
+        getCroppedImageButton.addEventListener("click", function () {
+          // Get the cropped canvas
+          var croppedCanvas = cropper.getCroppedCanvas();
+
+          // Get the data URL of the cropped image
+          var croppedImageDataUrl = croppedCanvas.toDataURL("image/jpeg");
+          // alert("Image URL in console.")
+          console.log(croppedImageDataUrl);
+
+          // Do something with the cropped image data, for example, display it
+          // var croppedImageElement = document.createElement("img");
+          // croppedImageElement.src = croppedImageDataUrl;
+          // document.body.appendChild(croppedImageElement);
+
+          // You can also get a Blob instead of a data URL
+          // var croppedImageBlob = croppedCanvas.toBlob(function (blob) {
+          //   // Do something with the Blob
+          //   console.log(blob);
+          // }, "image/jpeg");
+        });
+      });
+    </script>
+  </body>
+</html>
