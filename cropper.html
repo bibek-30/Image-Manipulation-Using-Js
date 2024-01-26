@@ -10,141 +10,234 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
-    <style>
-      .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .overlay-content {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 600px;
-        width: 100%;
-        display: flex;
-      }
-
-      .page {
-        display: none;
-      }
-
-      .page h2 {
-        margin-top: 0;
-      }
-
-      .overlay-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #fff;
-        border: none;
-        padding: 8px;
-        cursor: pointer;
-      }
-      .container {
-        max-width: 640px;
-      }
-
-      img {
-        max-width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css"/>
     <title>Overlay with Multiple Pages</title>
   </head>
   <body>
     <button id="openOverlayBtn" onclick="openOverlay()">Start Designing</button>
 
-    <div id="overlay" class="overlay">
-      <div class="overlay-content">
-        <div class="container">
-          <div>
-            <img
-              id="image"
-              src="https://www.fotobehang.com/media/catalog/product/cache/871f459736130e239a3f5e6472128962/w/0/w00997_option3.jpg"
-              alt="Picture"
-            />
+    <div id="cropOverlay" class="cropOverlay" data-price="24.75">
+      <div>
+        <div class="overlay-content">
+          <div class="img_container">
+            <div class="manipulated-images">
+              <img
+                id="image"
+                src="https://behang-nl-dev.myshopify.com/cdn/shop/files/w03507-small.jpg"
+                alt="images"
+                width=""
+                height=""
+              >
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="page" id="page1">
-            <div class="image_size_container">
-              <div class="image_size_container-wrap">
-                <div>
-                  <h2>Photo wallpaper ( fleece wallpaper )</h2>
-                  <h3>Compose your photo wallpaper!</h3>
-                  <p>
-                    We produce your custom photo wallpaper. Fill in the fields
-                    below and we will get started for you!
-                  </p>
-                  <h4>Enter the size of your wall</h4>
+          <div class="cropContentBox">
+            <div class="overlay-navigation-prev">
+              <button id="prevBtn" onclick="prevPage()" disabled>Previous</button>
+              <div class="step-wrap">
+                Step
+                <span id="currentPage">1</span>/<span class="total-page">3</span>
+              </div>
+              <button style="color: black;" class="close-btn" onclick="closeOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" height="16" width="16">
+                  <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/>
+                </svg>
+              </button>
+            </div>
+            <h2>Wallpaper</h2>
+            <div class="page" id="page1">
+              <div class="image_size_container">
+                <div class="image_size_container-wrap">
+                  <div>
+                    <h3>Compose your photo wallpaper!</h3>
+                    <p>We produce your custom photo wallpaper. Fill in the fields below and we will get started for you!</p>
+                    <h4>Enter the size of your wall</h4>
+                    <span
+                      >Enter the dimensions of your wall here to make a selection.
+                      <strong>We recommend adding 10cm at height and width ( margin ).</strong></span
+                    >
+                  </div>
+                  <div class="cropInputWrapper">
+                    <div class="inputFieldWrap">
+                      <label for="width">Width</label>
+                      <input type="number" id="width" name="width">
+                      <span>cm</span>
+                    </div>
+                    <div class="inputFieldWrap">
+                      <label for="height">Height</label>
+                      <input type="number" id="height" name="height">
+                      <span>cm</span>
+                    </div>
+                  </div>
                   <span
-                    >Enter the dimensions of your wall here to make a selection.
-                    <strong
-                      >We recommend adding 10cm at height and width ( margin
-                      ).</strong
+                    ><strong>Note:</strong> Check the size you entered and be sure to include the margin.<strong
+                      >We recommend adding 4 inch to the height and width.</strong
                     ></span
                   >
                 </div>
-                <div>
-                  <label for="height">Height</label>
-                  <input type="text" id="height" name="height" />
-                  <label for="width">Width</label>
-                  <input type="text" id="width" name="width" />
-                </div>
               </div>
             </div>
-            <button id="getCroppedImage">Get image</button>
-          </div>
-          <div class="page" id="page2">
-            <h2>Page 2</h2>
-            <p>This is content for page 2.</p>
-          </div>
-          <div class="page" id="page3">
-            <h2>Page 2</h2>
-            <p>This is content for page 2.</p>
-          </div>
-          <div class="page" id="page4">
-            <h2>Page 2</h2>
-            <p>This is content for page 2.</p>
+            <div class="page" id="page2">
+              <div class="wallPaperEditBox">
+                <h3>Edit your photo</h3>
+                <p>Prefer this photo in greyscale? Or mirrored? Use the options below.</p>
+                <div class="edit_wrap">
+                  <div class="editWrapBox">
+                    <div class="form-field">
+                      <input name="FLIP_X" type="checkbox" id="flipX" class="input-field" value="false">
+                      <label for="flipX">
+                        <span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <g stroke-width="2" fill="none" fill-rule="evenodd"><path stroke-dasharray="2" d="M12 3v18"></path><path stroke-linecap="round" stroke-linejoin="round" d="m21 8-6 4 6 4zM3 8l6 4-6 4z"></path></g>
+                          </svg></span
+                        ><span class="flex-grow">Flip your photo (horizontal)</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="edit_wrap">
+                  <div class="editWrapBox">
+                    <div class="form-field">
+                      <input name="FLIP_y" type="checkbox" id="flipy" class="input-field" value="false">
+                      <label for="flipy">
+                        <span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <g stroke-width="2" fill="none" fill-rule="evenodd"><path stroke-dasharray="2" d="M21 12H3"></path><path stroke-linecap="round" stroke-linejoin="round" d="m16 21-4-6-4 6zM16 3l-4 6-4-6z"></path></g>
+                          </svg></span
+                        ><span class="flex-grow">Mirror your photo</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="edit_wrap">
+                  <div class="editWrapBox">
+                    <div class="form-field">
+                      <input name="BLACKANDWHITE" type="checkbox" id="BLACKANDWHITE" class="input-field" value="false">
+                      <label for="BLACKANDWHITE">
+                        <span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><circle id="Oval" stroke="#161616" stroke-width="2" cx="12" cy="12" r="10"></circle><path d="M12,19 C15.8659932,19 19,15.8659932 19,12 C19,8.13400675 15.8659932,5 12,5" id="Path" fill="currentColor"></path></g>
+                          </svg></span
+                        ><span class="flex-grow">Greyscale image</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wallPaperEditBox">
+                <div class="numbering-wrap">
+                  <h3>Numbering</h3>
+                  <button id="openModalBtn">Info</button>
+                  <div id="myModal" class="modal-info">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p>This is the content of the modal.</p>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="wallPaperEditBox">
+                  <p>By default, we print stripe numbering in the margin at the bottom of the wallpaper.</p>
+                  <div role="group" aria-labelledby="numbering" class="radio-group">
+                    
+                    <div class="form-field"
+                      ><input
+                        name="no_number"
+                        type="radio"
+                        id="numbering-0"
+                        class=""
+                        value="Numbering at the bottom (recommended)"
+                        checked=""
+                      >
+                      <label for="numbering-0" class="label">
+                        <div class="label-text">Numbering at the bottom (recommended)</div>
+                      </label></div>
+                    <div class="form-field -row -box"
+                      ><input name="no_number" type="radio" id="numbering-1" class="" value="No numbering on the stripes">
+                      <label for="numbering-1" class="label">
+                        <div class="label-text">No numbering on the stripes</div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <button id="getCroppedImage">Image</button>
+                <img src="" class="croppedImage" alt="" width="300px" height="300px"/>
+            </div>
+            <div class="page" id="page3">
+              <h3>Complete your order</h3>
+              <p>Choose your glue and accessories</p>
+    
+              <div class="upSell-products">
+                <h2>Up sell Products</h2>
+              </div>
+            </div>
+            <!--
+              <div class="page" id="page4">
+                <h2>Page 4</h2>
+                <p>This is content for page 4.</p>
+              </div>
+            -->
+            <div class="price-container">
+              <div class="priceBox">
+                <div class="totalprice">$34.95</div>
+                <p>incl. Vat</p>
+              </div>
+              <div class="overlay-navigation">
+                <button id="nextBtn" onclick="nextPage()">Next</button>
+                <button id="addtocart" style="display:none;">Add to cart</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="overlay-navigation">
-        <button id="prevBtn" onclick="prevPage()" disabled>Prev</button>
-        <span id="currentPage">1</span>
-        <button id="nextBtn" onclick="nextPage()">Next</button>
-      </div>
-      <button class="close-btn" onclick="closeOverlay()">X</button>
     </div>
-
+    
+    <!-- script to open model in edit button -->
     <script>
       let currentPage = 1;
       const totalPages = document.getElementsByClassName("page").length;
 
       function openOverlay() {
-        document.getElementById("overlay").style.display = "flex";
+        document.getElementById("cropOverlay").style.cssText = "opacity: 1; visibility: visible; z-index:999;";
+        document.body.classList.add('cropper-overflow');
         showPage(currentPage);
         updateButtons();
       }
 
+  
       function closeOverlay() {
-        document.getElementById("overlay").style.display = "none";
+        document.getElementById("cropOverlay").style.display = "none";
+        document.body.classList.remove('cropper-overflow');
       }
 
       function showPage(pageNumber) {
@@ -163,6 +256,10 @@
           currentPage++;
           showPage(currentPage);
         }
+        if (currentPage == totalPages ){
+          document.querySelector('#nextBtn').style.display ="none";
+          document.querySelector('#addtocart').style.display ="block";
+        } 
       }
 
       function prevPage() {
@@ -170,6 +267,10 @@
           currentPage--;
           showPage(currentPage);
         }
+         if (currentPage != totalPages ){
+          document.querySelector('#nextBtn').style.display ="block";
+          document.querySelector('#addtocart').style.display ="none";
+        } 
       }
 
       function updateButtons() {
@@ -177,67 +278,207 @@
         document.getElementById("nextBtn").disabled =
           currentPage === totalPages;
       }
-    </script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"
-      integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        var image = document.querySelector("#image");
-        var widthInput = document.querySelector("#width");
-        var heightInput = document.querySelector("#height");
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"
+  integrity="sha512-9KkIqdfN7ipEW6B6k+Aq20PV31bjODg4AA52W+tYtAE0jE0kMx49bjJ3FgvS56wzmyfMUHbQ4Km2b7l9+Y/+Eg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 
-        // Add an event listener to update aspect ratio when width or height changes
-        widthInput.addEventListener("input", updateAspectRatio);
-        heightInput.addEventListener("input", updateAspectRatio);
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+      var image = document.querySelector("#image");
+      var widthInput = document.querySelector("#width");
+      var heightInput = document.querySelector("#height");
+      var flipButton = document.querySelector("#flipX");
+      var mirrirButton = document.querySelector("#flipy");
 
-        // Function to update aspect ratio based on input values
-        function updateAspectRatio() {
-          var aspectRatioValue = widthInput.value / heightInput.value;
-          cropper.setAspectRatio(aspectRatioValue);
+      // Add an event listener for the flip button
+      flipButton.addEventListener("click", function () {
+        toggleFlip();
+      });
+      mirrirButton.addEventListener("click", function () {
+        toggleMirrir();
+      });
+
+      // Function to update aspect ratio based on input values
+      function updateAspectRatio() {
+        var aspectRatioValue = widthInput.value
+          ? widthInput.value
+          : localStorage.getItem("width");
+        aspectRatioValue /= heightInput.value
+          ? heightInput.value
+          : localStorage.getItem("height");
+        cropper.setAspectRatio(aspectRatioValue);
+
+        // Update values in local storage
+        localStorage.setItem("width", widthInput.value);
+        localStorage.setItem("height", heightInput.value);
+      }
+      // Add event listeners to update aspect ratio when width or height changes
+      widthInput.addEventListener("input", updateAspectRatio);
+      heightInput.addEventListener("input", updateAspectRatio);
+
+      // Set values from local storage to the input fields during page load
+      widthInput.value = localStorage.getItem("width") || "";
+      heightInput.value = localStorage.getItem("height") || "";
+
+      // Function to toggle between horizontal and vertical flipping
+      function toggleFlip() {
+        var currentScaleX = cropper.getData().scaleX;
+
+        // Toggle between horizontal and vertical flipping
+        cropper.scaleX(currentScaleX === 1 ? -1 : 1);
+      }
+      function toggleMirrir() {
+        var currentScaleY = cropper.getData().scaleY;
+
+        // Toggle between horizontal and vertical flipping
+        cropper.scaleY(currentScaleY === 1 ? -1 : 1);
+      }
+
+      var cropper = new Cropper(image, {
+        dragMode: "move",
+        aspectRatio: widthInput.value / heightInput.value,
+        autoCropArea: 1,
+        restore: true,
+        guides: false,
+        center: true,
+        highlight: false,
+        cropBoxMovable: false,
+        cropBoxResizable: false,
+        toggleDragModeOnDblclick: true,
+        movable: true,
+        viewMode: 1,
+        scaleX: 1,
+        scaleY: 1,
+      });
+
+      var greyScale = document.querySelector('#BLACKANDWHITE');
+      var grayscaleEnabled = false;
+      document.querySelector('.manipulated-images').style.filter = "grayScale(0)";
+
+      // Add an event listener to the checkbox
+      greyScale.addEventListener('change', function () {
+          // Update the grayscaleEnabled variable based on the checkbox state
+          grayscaleEnabled = greyScale.checked;
+        if(greyScale.checked == true) {
+          document.querySelector('.manipulated-images').style.filter = "grayScale(1)";
+        }else{
+            document.querySelector('.manipulated-images').style.filter = "grayScale(0)";
+        }
+      });
+
+    var getCroppedImageButton = document.querySelector("#getCroppedImage");
+    getCroppedImageButton.addEventListener("click", function () {
+      try {
+        var croppedCanvas = cropper.getCroppedCanvas();
+
+        var imageDataUrl;
+
+        if (grayscaleEnabled) {
+          var blackAndWhiteCanvas = document.createElement("canvas");
+          var bwContext = blackAndWhiteCanvas.getContext("2d");
+
+          blackAndWhiteCanvas.width = croppedCanvas.width;
+          blackAndWhiteCanvas.height = croppedCanvas.height;
+
+          bwContext.drawImage(
+            croppedCanvas,
+            0,
+            0,
+            croppedCanvas.width,
+            croppedCanvas.height
+          );
+
+          var imageData = bwContext.getImageData(
+            0,
+            0,
+            blackAndWhiteCanvas.width,
+            blackAndWhiteCanvas.height
+          );
+          var data = imageData.data;
+
+          for (var i = 0; i < data.length; i += 4) {
+            var grayscale =
+              data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11;
+
+            data[i] = grayscale;
+            data[i + 1] = grayscale;
+            data[i + 2] = grayscale;
+          }
+
+          bwContext.putImageData(imageData, 0, 0);
+          imageDataUrl = blackAndWhiteCanvas.toDataURL("image/jpeg");
+            document.querySelector('.croppedImage').setAttribute("src",imageDataUrl)
+        } else {
+          imageDataUrl = croppedCanvas.toDataURL("image/jpeg");
+            document.querySelector('.croppedImage').setAttribute("src",imageDataUrl)
         }
 
-        var cropper = new Cropper(image, {
-          dragMode: "move",
-          aspectRatio: widthInput.value / heightInput.value,
-          autoCropArea: 1,
-          restore: true,
-          guides: false,
-          center: true,
-          highlight: false,
-          cropBoxMovable: false,
-          cropBoxResizable: false,
-          toggleDragModeOnDblclick: true,
-          movable: true,
-          viewMode: 1, // Set the view mode as needed (0, 1, or 2)
-        });
+        console.log(imageDataUrl);
+      } catch (error) {
+        console.error("Error processing image:", error);
+      }
+    });
+  });
+  const widthInput = document.querySelector("#width");
+  const heightInput = document.querySelector("#height");
 
-        // Example: Get cropped image data when a button is clicked
-        var getCroppedImageButton = document.querySelector("#getCroppedImage");
-        getCroppedImageButton.addEventListener("click", function () {
-          // Get the cropped canvas
-          var croppedCanvas = cropper.getCroppedCanvas();
+  widthInput.addEventListener("input", calculateArea);
+  heightInput.addEventListener("input", calculateArea);
 
-          // Get the data URL of the cropped image
-          var croppedImageDataUrl = croppedCanvas.toDataURL("image/jpeg");
-          // alert("Image URL in console.")
-          console.log(croppedImageDataUrl);
+  calculateArea();
 
-          // Do something with the cropped image data, for example, display it
-          // var croppedImageElement = document.createElement("img");
-          // croppedImageElement.src = croppedImageDataUrl;
-          // document.body.appendChild(croppedImageElement);
+  function calculateArea() {
+    const pricePerMeter = document
+      .querySelector("#cropOverlay")
+      .getAttribute("data-price");
 
-          // You can also get a Blob instead of a data URL
-          // var croppedImageBlob = croppedCanvas.toBlob(function (blob) {
-          //   // Do something with the Blob
-          //   console.log(blob);
-          // }, "image/jpeg");
-        });
+    const width = parseFloat(widthInput.value)
+      ? parseFloat(widthInput.value)
+      : parseFloat(localStorage.getItem("width"));
+    const height = parseFloat(heightInput.value)
+      ? parseFloat(heightInput.value)
+      : parseFloat(localStorage.getItem("height"));
+
+    const area = (width * height) / 1000;
+
+    const price = area * pricePerMeter;
+
+    if (price < pricePerMeter) {
+      document.querySelector(".totalprice").innerHTML = "$" + pricePerMeter.toFixed(2);
+      addtocart(Math.round(pricePerMeter));
+    } else {
+      document.querySelector(".totalprice").innerHTML = "$" + price.toFixed(2);
+      addtocart(Math.round(price));
+    }
+
+    // console.log("Area:", area + " sq. meter and Price :", price );
+  }
+  function addtocart(price) {  
+    document.querySelector('#addtocart').addEventListener('click', ()=>{
+      const productId = document.querySelector("#cropOverlay").getAttribute("data-id");
+  
+      var cartdata = {
+        id: productId,
+        quantity: price,
+      };
+      $.ajax({
+        type: "POST",
+        url: "/cart/add.js",
+        data: cartdata,
+        success: function () {
+          console.log("Added item to cart.");
+          window.location.href = "/cart";
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.log("Could not add item to cart.");
+        },
       });
-    </script>
+    });
+  }
+</script>
   </body>
 </html>
