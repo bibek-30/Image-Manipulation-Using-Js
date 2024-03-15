@@ -1,0 +1,419 @@
+{
+    "name": "Configure Wallpaper Config",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page3"
+      },
+      {
+        "type": "text",
+        "id": "step",
+        "label": "Step Text"
+      },
+      {
+        "type": "text",
+        "id": "cart-text",
+        "label": "Cart Drawer Text",
+        "info": "use '|' to seperate the singular and plural"
+      },
+      {
+        "type": "text",
+        "id": "close",
+        "label": "Close Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "prev",
+        "label": "Previous Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "next",
+        "label": "Next Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "addotcart",
+        "label": "Cart Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "configure",
+        "label": "Configure Now Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "alert1",
+        "label": "Alert text for good quality"
+      },
+      {
+        "type": "text",
+        "id": "alert2",
+        "label": "Alert text for medium quality"
+      },
+      {
+        "type": "text",
+        "id": "alert3",
+        "label": "Alert text for low quality"
+      },
+      {
+        "type": "text",
+        "id": "alert4",
+        "label": "Alert text to continue add to cart"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 1",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page1"
+      },
+      {
+        "type": "text",
+        "id": "page1_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page1",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page1",
+        "label": "Descriptions1"
+      },
+      {
+        "type": "text",
+        "id": "subheader1_page1",
+        "label": "Sub Header2"
+      },
+      {
+        "type": "text",
+        "id": "text2_page1",
+        "label": "Descriptions2",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "width",
+        "label": "Width"
+      },
+      {
+        "type": "text",
+        "id": "height",
+        "label": "Height"
+      },
+      {
+        "type": "text",
+        "id": "text3_page1",
+        "label": "Descriptions3",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "note",
+        "label": "Note"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Placeholder"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page2"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page2",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page2",
+        "label": "Descriptions1"
+      },
+      {
+        "type": "text",
+        "id": "flip",
+        "label": "Flip Text"
+      },
+      {
+        "type": "text",
+        "id": "mirror",
+        "label": "Mirror Text"
+      },
+      {
+        "type": "text",
+        "id": "gray",
+        "label": "Gray Text"
+      },
+      {
+        "type": "text",
+        "id": "subheader1_page2",
+        "label": "Sub Header2"
+      },
+      {
+        "type": "text",
+        "id": "text2_page2",
+        "label": "Descriptions2",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "number1",
+        "label": "Numbering Text1"
+      },
+      {
+        "type": "text",
+        "id": "number2",
+        "label": "Numbering Text2"
+      },
+      {
+        "type": "text",
+        "id": "info",
+        "label": "Info"
+      },
+      {
+        "type": "text",
+        "id": "info_desc",
+        "label": "Info Descriptions"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 3",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page3"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page3",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page3",
+        "label": "Descriptions1"
+      }
+    ]
+  },{
+    "name": "Configure Wallpaper Config",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page3"
+      },
+      {
+        "type": "text",
+        "id": "step",
+        "label": "Step Text"
+      },
+      {
+        "type": "text",
+        "id": "cart-text",
+        "label": "Cart Drawer Text",
+        "info": "use '|' to seperate the singular and plural"
+      },
+      {
+        "type": "text",
+        "id": "close",
+        "label": "Close Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "prev",
+        "label": "Previous Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "next",
+        "label": "Next Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "addotcart",
+        "label": "Cart Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "configure",
+        "label": "Configure Now Btn Text"
+      },
+      {
+        "type": "text",
+        "id": "alert1",
+        "label": "Alert text for good quality"
+      },
+      {
+        "type": "text",
+        "id": "alert2",
+        "label": "Alert text for medium quality"
+      },
+      {
+        "type": "text",
+        "id": "alert3",
+        "label": "Alert text for low quality"
+      },
+      {
+        "type": "text",
+        "id": "alert4",
+        "label": "Alert text to continue add to cart"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 1",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page1"
+      },
+      {
+        "type": "text",
+        "id": "page1_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page1",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page1",
+        "label": "Descriptions1"
+      },
+      {
+        "type": "text",
+        "id": "subheader1_page1",
+        "label": "Sub Header2"
+      },
+      {
+        "type": "text",
+        "id": "text2_page1",
+        "label": "Descriptions2",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "width",
+        "label": "Width"
+      },
+      {
+        "type": "text",
+        "id": "height",
+        "label": "Height"
+      },
+      {
+        "type": "text",
+        "id": "text3_page1",
+        "label": "Descriptions3",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "note",
+        "label": "Note"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Placeholder"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page2"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page2",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page2",
+        "label": "Descriptions1"
+      },
+      {
+        "type": "text",
+        "id": "flip",
+        "label": "Flip Text"
+      },
+      {
+        "type": "text",
+        "id": "mirror",
+        "label": "Mirror Text"
+      },
+      {
+        "type": "text",
+        "id": "gray",
+        "label": "Gray Text"
+      },
+      {
+        "type": "text",
+        "id": "subheader1_page2",
+        "label": "Sub Header2"
+      },
+      {
+        "type": "text",
+        "id": "text2_page2",
+        "label": "Descriptions2",
+        "info": "To make some sections bold use '|' this operators"
+      },
+      {
+        "type": "text",
+        "id": "number1",
+        "label": "Numbering Text1"
+      },
+      {
+        "type": "text",
+        "id": "number2",
+        "label": "Numbering Text2"
+      },
+      {
+        "type": "text",
+        "id": "info",
+        "label": "Info"
+      },
+      {
+        "type": "text",
+        "id": "info_desc",
+        "label": "Info Descriptions"
+      }
+    ]
+  },
+  {
+    "name": "Configure Wallpaper Page 3",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page3"
+      },
+      {
+        "type": "text",
+        "id": "subheader_page3",
+        "label": "Sub Header1"
+      },
+      {
+        "type": "text",
+        "id": "text1_page3",
+        "label": "Descriptions1"
+      }
+    ]
+  },
